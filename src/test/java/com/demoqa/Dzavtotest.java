@@ -12,7 +12,6 @@ import static com.codeborne.selenide.Selenide.*;
 public class Dzavtotest extends TestBase {
     @Test
     void successfulSearchTest() {
-        Configuration.holdBrowserOpen=true;
     open ("/automation-practice-form");
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
