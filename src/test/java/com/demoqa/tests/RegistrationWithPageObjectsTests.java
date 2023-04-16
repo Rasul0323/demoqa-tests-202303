@@ -1,6 +1,6 @@
-package com.demoqa;
+package com.demoqa.tests;
 
-import com.codeborne.selenide.Configuration;
+import com.demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -9,16 +9,15 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class Dzavtotest extends TestBase {
+public class RegistrationWithPageObjectsTests extends TestBase {
+
     @Test
     void successfulSearchTest() {
-    open ("/automation-practice-form");
-        executeJavaScript("$('footer').remove()");
-        executeJavaScript("$('#fixedban').remove()");
-        $("#firstName").setValue("Mr Tom");
-        $("#lastName").setValue("Harison");
-        $("#userEmail").setValue("vv@aaa.com");
-        $(byText("Male")).click();
+        registrationPage.openPage()
+                .setFirstName("Mr Tom")
+                .setLastName("Harison")
+                .setUserEmail("vv@aaa.com")
+                .setGender("Male");
         $("#userNumber").setValue("1111111111");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").click();
