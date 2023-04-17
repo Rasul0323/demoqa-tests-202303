@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 
 public class TestBase {
     RegistrationPage registrationPage= new RegistrationPage();
+
     @BeforeAll
     static void beforeAll(){
         Configuration.baseUrl="https://demoqa.com";
@@ -13,6 +14,7 @@ public class TestBase {
         Configuration.pageLoadStrategy = "eager";
         Configuration.browser = "chrome";
         Configuration.timeout = 3000;
+        Configuration.holdBrowserOpen = true;
 
 
     }

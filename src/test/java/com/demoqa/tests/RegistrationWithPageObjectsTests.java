@@ -1,13 +1,6 @@
 package com.demoqa.tests;
 
-import com.demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationWithPageObjectsTests extends TestBase {
 
@@ -17,34 +10,26 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setFirstName("Mr Tom")
                 .setLastName("Harison")
                 .setUserEmail("vv@aaa.com")
-                .setGender("Male");
-        $("#userNumber").setValue("1111111111");
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").click();
-        $(byText("July")).click();
-        $(".react-datepicker__year-select").click();
-        $(byText("1993")).click();
-        $(".react-datepicker__day--014").click();
-        $("#subjectsInput").setValue("History");
-        $("#subjectsInput").pressEnter();
-        $(byText("Sports")).click();
-        $("#uploadPicture").uploadFile(new File("src/test/resources/4.jpg"));
-        $("#currentAddress").setValue("Rp-27");
-        $("#state").click();
-        $(byText("NCR")).click();
-        $("#city").click();
-        $(byText("Delhi")).click();
-        $("#submit").click();
-        $(".table").shouldHave(
-                text("Mr Tom Harison"),
-                text("vv@aaa.com"),
-                text("Male"),
-                text("1111111111"),
-                text("14 July,1993"),
-                text("History"),
-                text("Sports"),
-                text("4.jpg"),
-                text("Rp-27"),
-                text("NCR Delhi"));
+                .setGender("Male")
+                .setNumber("1111111111")
+                .setBirthDate( "14", "July", "1993")
+                .setSubjects("History")
+                .setHobby("Sports")
+                .uploadPicture("4.jpg")
+                .setCurrentAddress("Rp-27")
+                .setState("NCR")
+                .setCity("Delhi")
+                .clickSubmit();
+        registrationPage.verifyRegistrationResultsModalAppears()
+                .verifyResult("Student Name", "Mr Tom Harison")
+                .verifyResult("Student Email", "vv@aaa.com")
+                .verifyResult("Gender", "Male")
+                .verifyResult("Mobile", "1111111111")
+                .verifyResult("Date of Birth", "14 July,1993")
+                .verifyResult("Subjects", "History")
+                .verifyResult("Hobbies", "Sports")
+                .verifyResult("Picture", "4.jpg")
+                .verifyResult("Address", "Rp-27")
+                .verifyResult("State and City", "NCR Delhi");
     }
 }
