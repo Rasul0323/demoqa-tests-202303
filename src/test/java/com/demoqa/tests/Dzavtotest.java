@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class Dzavtotest extends TestBase {
     @Test
     void successfulSearchTest() {
-        open ("/automation-practice-form");
+        open("/automation-practice-form");
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
         $("#firstName").setValue("Mr Tom");

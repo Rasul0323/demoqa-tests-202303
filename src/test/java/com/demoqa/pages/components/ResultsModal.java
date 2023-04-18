@@ -8,7 +8,6 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ResultsModal {
-    // SelenideElements / locator / etc
     SelenideElement resultsModal = $(".modal-dialog"),
             resultsHeader = $("#example-modal-sizes-title-lg"),
             resultsTable = $(".table-responsive");

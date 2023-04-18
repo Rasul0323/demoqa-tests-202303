@@ -1,18 +1,21 @@
 package com.demoqa.tests;
 
+import com.demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
 public class RegistrationWithPageObjectsTests extends TestBase {
+    RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void successfulSearchTest() {
         registrationPage.openPage()
+                .removeBanners()
                 .setFirstName("Mr Tom")
                 .setLastName("Harison")
                 .setUserEmail("vv@aaa.com")
                 .setGender("Male")
                 .setNumber("1111111111")
-                .setBirthDate( "14", "July", "1993")
+                .setBirthDate("14", "July", "1993")
                 .setSubjects("History")
                 .setHobby("Sports")
                 .uploadPicture("4.jpg")
