@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 public class RegistrationPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     ResultsModal resultsModal = new ResultsModal();
-    SelenideElement FormHeaderText = $(".practice-form-wrapper"),
+    SelenideElement formHeaderText = $(".practice-form-wrapper"),
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
@@ -31,7 +31,7 @@ public class RegistrationPage {
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
-        FormHeaderText.shouldHave(text("Student Registration Form"));
+        formHeaderText.shouldHave(text("Student Registration Form"));
         return this;
     }
 
