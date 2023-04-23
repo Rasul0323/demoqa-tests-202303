@@ -8,26 +8,27 @@ import static com.demoqa.tests.TestData.*;
 import static com.demoqa.utils.RandomUtils.*;
 
 
-public class DzavtotestRandomUtilsTests extends TestBase {
+public class StudentRegistrationForm extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     Faker faker = new Faker();
+    String firstName = faker.name().firstName(),
+            lastName = faker.name().lastName(),
+            userEmail = faker.internet().emailAddress(),
+            userGender = faker.options().option(TestData.gender),
+            userNumber = 89 + faker.phoneNumber().subscriberNumber(8),
+            dayOfBirth = String.format("%02d", faker.number().numberBetween(1, 25)),
+            monthOfBirth = faker.options().option(months),
+            yearOfBirth = String.valueOf(getRandomInt(1956,2004)),
+            subject = faker.options().option(subjects),
+            hobbies = faker.options().option(hobbiess),
+            currentAddress = faker.address().streetAddress(),
+            randomState = faker.options().option(states),
+            randomCity = getRandomCity(randomState);
 
     @Test
     void practiceFormTest() {
 
-        String firstName = faker.name().firstName(),
-                lastName = faker.name().lastName(),
-                userEmail = faker.internet().emailAddress(),
-                userGender = getRandomItemFromArray(TestData.gender),
-                userNumber = 89 + faker.phoneNumber().subscriberNumber(8),
-                dayOfBirth = String.format("%02d", faker.number().numberBetween(1, 25)),
-                monthOfBirth = getRandomItemFromArray(months),
-                yearOfBirth = String.valueOf(getRandomInt(1956,2004)),
-                subject = getRandomItemFromArray(subjects),
-                hobbies = getRandomItemFromArray(hobbiess),
-                currentAddress = faker.address().streetAddress(),
-                randomState = getRandomItemFromArray(states),
-                randomCity = getRandomCity(randomState);
+
 
         registrationPage.openPage()
                 .removeBanners()

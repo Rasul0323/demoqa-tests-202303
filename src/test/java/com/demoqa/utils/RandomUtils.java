@@ -1,37 +1,40 @@
 package com.demoqa.utils;
 
 import static com.demoqa.tests.TestData.*;
+import com.github.javafaker.Faker;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+
 public class RandomUtils {
+    private static Faker faker = new Faker();
     public static int getRandomInt(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
-    public static String getRandomItemFromArray(String[] values) {
-        int index = getRandomInt(0, values.length - 1);
+   // public static String getRandomItemFromArray(String[] values) {
+      //  int index = getRandomInt(0, values.length - 1);
 
-        return values[index];
-    }
+      //  return values[index];
+  //  }
 
     public static String getRandomCity(String state) {
         String city;
         switch (state) {
             case "NCR": {
-                city = getRandomItemFromArray(stateNCR);
+                city = faker.options().option(stateNCR);
                 return city;
             }
             case "Uttar Pradesh": {
-                city = getRandomItemFromArray(stateUttarPradesh);
+                city = faker.options().option(stateUttarPradesh);
                 return city;
             }
             case "Haryana": {
-                city = getRandomItemFromArray(stateHaryana);
+                city = faker.options().option(stateHaryana);
                 return city;
             }
             case "Rajasthan": {
-                city = getRandomItemFromArray(stateRajasthan);
+                city = faker.options().option(stateRajasthan);
                 return city;
             }
         }
