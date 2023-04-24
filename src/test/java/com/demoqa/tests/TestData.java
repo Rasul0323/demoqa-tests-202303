@@ -1,6 +1,6 @@
 package com.demoqa.tests;
 
-public  class TestData {
+public class TestData {
     public static String[] months = {"January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"};
 

@@ -18,7 +18,7 @@ public class StudentRegistrationForm extends TestBase {
             userNumber = 89 + faker.phoneNumber().subscriberNumber(8),
             dayOfBirth = String.format("%02d", faker.number().numberBetween(1, 25)),
             monthOfBirth = faker.options().option(months),
-            yearOfBirth = String.valueOf(getRandomInt(1956,2004)),
+            yearOfBirth = String.valueOf(getRandomInt(1956, 2004)),
             subject = faker.options().option(subjects),
             hobbies = faker.options().option(hobbiess),
             currentAddress = faker.address().streetAddress(),
@@ -27,8 +27,6 @@ public class StudentRegistrationForm extends TestBase {
 
     @Test
     void practiceFormTest() {
-
-
 
         registrationPage.openPage()
                 .removeBanners()

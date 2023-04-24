@@ -1,6 +1,7 @@
 package com.demoqa.utils;
 
 import static com.demoqa.tests.TestData.*;
+
 import com.github.javafaker.Faker;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -8,15 +9,16 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
     private static Faker faker = new Faker();
+
     public static int getRandomInt(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
-   // public static String getRandomItemFromArray(String[] values) {
-      //  int index = getRandomInt(0, values.length - 1);
+    // public static String getRandomItemFromArray(String[] values) {
+    //  int index = getRandomInt(0, values.length - 1);
 
-      //  return values[index];
-  //  }
+    //  return values[index];
+    //  }
 
     public static String getRandomCity(String state) {
         String city;
