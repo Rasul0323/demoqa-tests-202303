@@ -6,38 +6,17 @@ plugins {
 repositories {
     mavenCentral()
 }
-def selenideVersion = "6.13.0",
-    allureVersion = "2.21.0",
-    jUnitVersion = "5.9.3",
-    slf4jVersion = "2.0.7"
-
-allure {
-    report {
-        version.set(allureVersion)
-    }
-    adapter {
-        aspectjWeaver.set(true)
-        frameworks {
-            junit5 {
-                adapterVersion.set(allureVersion)
-            }
-        }
-    }
-}
 
 dependencies {
     testImplementation(
-            "com.codeborne:selenide:$selenideVersion",
-            "io.qameta.allure:allure-selenide:$allureVersion",
+            "com.codeborne:selenide:6.12.4",
+            "io.qameta.allure:allure-selenide:2.22.0",
             "com.github.javafaker:javafaker:1.0.2",
-            "org.junit.jupiter:junit-jupiter:$jUnitVersion",
-            "org.slf4j:slf4j-simple:$slf4jVersion"
+            "org.junit.jupiter:junit-jupiter:5.9.2",
+            "org.slf4j:slf4j-simple:2.0.7"
     )
 }
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
 
-}
 tasks.withType(Test) {
     testLogging {
         lifecycle {
@@ -47,8 +26,23 @@ tasks.withType(Test) {
     }
 }
 
+allure {
+    report {
+        version.set("2.22.0")
+    }
+    adapter { // отвечает за появление папки build/allure-results
+        aspectjWeaver.set true //обработка аннотации @Step
+        frameworks {
+            junit5 { //название фреймворка
+                adapterVersion.set("2.22.0") //версия интеграции фреймворка и Allure
+            }
+        }
+    }
+}
+
 test {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 }
 task remote_test(type: Test) {
     useJUnitPlatform{
