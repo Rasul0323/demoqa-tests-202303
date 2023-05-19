@@ -2,6 +2,7 @@ HELP.md
 build/
 !**/src/main/**
 !**/src/test/**
+gradle/wrapper
 
 ### IntelliJ IDEA ###
 .idea
