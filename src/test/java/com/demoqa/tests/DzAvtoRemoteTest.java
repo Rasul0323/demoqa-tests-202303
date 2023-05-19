@@ -1,6 +1,7 @@
 package com.demoqa.tests;
 
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -10,14 +11,19 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Configuration.remote;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
 public class DzAvtoRemoteTest extends RemoteTestBase {
     @Test
     @Tag("remote")
+    @DisplayName("Successful registration")
     void successfulSearchTest() {
-        open("/automation-practice-form");
-        executeJavaScript("$('footer').remove()");
-        executeJavaScript("$('#fixedban').remove()");
+        step("Open form", () -> {
+                    open("/automation-practice-form");
+                    executeJavaScript("$('footer').remove()");
+                    executeJavaScript("$('#fixedban').remove()");
+                });
+        step("Fill form", () -> {
         $("#firstName").setValue("Mr Tom");
         $("#lastName").setValue("Harison");
         $("#userEmail").setValue("vv@aaa.com");
@@ -39,6 +45,8 @@ public class DzAvtoRemoteTest extends RemoteTestBase {
         $("#city").click();
         $(byText("Delhi")).click();
         $("#submit").click();
+        });
+        step("Verify results", () -> {
         $(".table").shouldHave(
                 text("Mr Tom Harison"),
                 text("vv@aaa.com"),
@@ -50,5 +58,6 @@ public class DzAvtoRemoteTest extends RemoteTestBase {
                 text("4.jpg"),
                 text("Rp-27"),
                 text("NCR Delhi"));
+        });
     }
 }
