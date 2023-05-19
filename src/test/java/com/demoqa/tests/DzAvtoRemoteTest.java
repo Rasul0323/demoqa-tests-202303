@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class DzAvtoRemoteTest extends RemoteTestBase {
     @Test
-    @Tag(remote)
+    @Tag("remote")
     void successfulSearchTest() {
         open("/automation-practice-form");
         executeJavaScript("$('footer').remove()");
