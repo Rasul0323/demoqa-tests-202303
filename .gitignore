@@ -1,19 +1,4 @@
-HELP.md
-build/
-!**/src/main/**
-!**/src/test/**
-gradle/wrapper
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### Gradle ###
-.gradle
-
-### Logs ###
-*.log
-
-.DS_Store
+/.idea
+/build
+/.gradle
+*.class
