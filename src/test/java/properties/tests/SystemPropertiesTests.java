@@ -13,6 +13,7 @@ public class SystemPropertiesTests {
 
         System.out.println(browser); //null
     }
+
     @Test
     void systemProperties1Test() {
         System.setProperty("browser", "chrome");
